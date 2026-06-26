@@ -29,7 +29,7 @@
 <link rel="icon" type="image/png" href="assets/logo-circle-128.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 
 <script type="application/ld+json">
@@ -76,9 +76,22 @@
       </div>
     </div>
     <div class="hero__mark">
-      <div class="hero__photo"><img src="assets/hero-portrait.jpg" alt="Gurpreet Singh, sport scientist and strength & conditioning coach" /></div>
+      <div class="hero__photo">
+        <img src="assets/hero-portrait.jpg" alt="Gurpreet Singh, sport scientist and strength & conditioning coach" />
+        <div class="hero__badge"><span>Evidence-based</span><strong>Elite sports science</strong></div>
+      </div>
       <p class="hero__tag">Gurpreet Singh — Sport Scientist &amp; S&amp;C Coach</p>
     </div>
+  </div>
+</section>
+
+<!-- STATS / CREDIBILITY -->
+<section class="stats">
+  <div class="stats__inner">
+    <div class="stat"><strong>1st</strong><span>Class Honours &amp; University Medal</span></div>
+    <div class="stat"><strong>PhD</strong><span>Candidate · performance science</span></div>
+    <div class="stat"><strong>Top 10%</strong><span>Teaching excellence, 2025</span></div>
+    <div class="stat"><strong>NRL · AFL</strong><span>Elite club &amp; academy experience</span></div>
   </div>
 </section>
 
@@ -158,12 +171,7 @@
     <p>I'm a sport scientist and strength &amp; conditioning coach who lives between the research and the training floor. As a PhD candidate and university lecturer in exercise physiology, motor learning and strength &amp; conditioning, I bring an evidence-based edge most coaches simply can't.</p>
     <p>I've worked inside elite environments — the Gold Coast Titans NRLW, the Sydney Swans Academy, the NRL RISE program and the Canterbury-Bankstown Bulldogs — managing GPS data, on-field conditioning and athlete wellbeing at the highest level.</p>
     <p class="about__mission">My mission is to bring that professional standard to the athletes hungry to reach it.</p>
-    <div class="creds">
-      <div class="cred"><strong>1st</strong><span>Class Honours &amp; University Medal</span></div>
-      <div class="cred"><strong>PhD</strong><span>Candidate, performance science</span></div>
-      <div class="cred"><strong>Top 10%</strong><span>Teaching excellence, 2025</span></div>
-      <div class="cred"><strong>NRL · AFL</strong><span>Elite club &amp; academy experience</span></div>
-    </div>
+    <a href="#contact" class="btn btn--solid">Work with me</a>
   </div>
 </section>
 
@@ -219,7 +227,7 @@
   document.getElementById('year').textContent = new Date().getFullYear();
   // Gentle scroll-reveal — adds a crafted, non-static feel
   (function(){
-    var sels = ['.hero__text','.hero__mark','.codes','.statement','.pillar','.svc',
+    var sels = ['.hero__text','.hero__mark','.stat','.codes','.statement','.pillar','.svc',
                 '.services__intro','.svc-cta','.about__media','.about__body','.band__quote',
                 '.brandband__mark','.brandband__tag','.brandband__cta','.contact__inner'];
     var els = [];
