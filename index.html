@@ -64,13 +64,17 @@
 </head>
 <body>
 
+<span id="top" aria-hidden="true"></span>
 <!-- NAV -->
-<header class="nav" id="top">
-  <a class="brand" href="#top">
+<header class="nav">
+  <a class="brand" href="#top" aria-label="Singh Performance — back to top">
     <img src="assets/logo-circle-128.png" alt="Singh Performance" width="46" height="46" />
     <span>Singh Performance</span>
   </a>
-  <nav class="nav__links">
+  <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav__links" id="nav-links">
     <a href="#approach">Approach</a>
     <a href="#services">Services</a>
     <a href="#about">About</a>
@@ -257,7 +261,51 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  // Gentle scroll-reveal — adds a crafted, non-static feel
+
+  // Logo → home: the href="#top" now targets a static sentinel at the very top of the
+  // document (not the sticky header), so native anchor navigation scrolls to the top
+  // correctly and smoothly (via CSS scroll-behavior). No JS needed.
+
+  // Mobile menu toggle
+  (function(){
+    var nav = document.querySelector('.nav');
+    var toggle = document.querySelector('.nav__toggle');
+    var links = document.getElementById('nav-links');
+    if(!toggle || !links) return;
+    function close(){ nav.classList.remove('nav--open'); toggle.setAttribute('aria-expanded','false'); }
+    toggle.addEventListener('click', function(){
+      var open = nav.classList.toggle('nav--open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+  })();
+
+  // Nav shadow once scrolled
+  (function(){
+    var nav = document.querySelector('.nav');
+    function onScroll(){ nav.classList.toggle('nav--scrolled', window.scrollY > 8); }
+    onScroll(); window.addEventListener('scroll', onScroll, { passive:true });
+  })();
+
+  // Scroll-spy — highlight the nav link for the section in view
+  (function(){
+    if(!('IntersectionObserver' in window)) return;
+    var links = Array.prototype.slice.call(document.querySelectorAll('.nav__links a[href^="#"]'));
+    var map = {};
+    links.forEach(function(a){ var id = a.getAttribute('href').slice(1); if(id) map[id] = a; });
+    var sections = Object.keys(map).map(function(id){ return document.getElementById(id); }).filter(Boolean);
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){ a.classList.remove('is-active'); });
+          if(map[e.target.id]) map[e.target.id].classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function(s){ spy.observe(s); });
+  })();
+
+  // Staggered scroll-reveal — adds a crafted, non-static feel
   (function(){
     var sels = ['.hero__text','.hero__mark','.stat','.codes','.statement','.pillar','.svc',
                 '.services__intro','.svc-cta','.about__media','.about__body','.band__quote',
@@ -268,7 +316,16 @@
       els.forEach(function(el){ el.classList.add('in'); }); return;
     }
     var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          // stagger siblings that reveal together (e.g. pillars, service rows, stats)
+          var group = e.target.parentElement ? Array.prototype.slice.call(e.target.parentElement.children).filter(function(c){ return c.classList.contains('reveal'); }) : [e.target];
+          var idx = Math.max(0, group.indexOf(e.target));
+          e.target.style.transitionDelay = Math.min(idx * 80, 320) + 'ms';
+          e.target.classList.add('in');
+          obs.unobserve(e.target);
+        }
+      });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
     els.forEach(function(el){ obs.observe(el); });
   })();
