@@ -235,3 +235,8 @@ body :where(.brandband){margin-top:40px;margin-bottom:40px}
   .brand--footer{align-items:center;max-width:none}
   .footer__meta{text-align:center}
 }
+
+/* FAQ — 2-column layout, distinct from the numbered 3-col pillars */
+.pillars--faq{grid-template-columns:repeat(2,1fr)}
+.pillars--faq .pillar h3{margin-top:0}
+@media (max-width:760px){ .pillars--faq{grid-template-columns:1fr} }

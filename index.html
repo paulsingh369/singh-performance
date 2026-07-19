@@ -43,7 +43,22 @@
   "url": "https://singh-performance.vercel.app/",
   "areaServed": "Australia",
   "address": { "@type": "PostalAddress", "addressRegion": "QLD", "addressLocality": "Gold Coast", "addressCountry": "AU" },
+  "geo": { "@type": "GeoCoordinates", "latitude": -28.0167, "longitude": 153.4000 },
   "founder": { "@type": "Person", "name": "Dr Gurpreet Singh", "jobTitle": "Sport Scientist & Strength and Conditioning Coach", "alumniOf": "Southern Cross University" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Do you coach beginners or only elite athletes?","acceptedAnswer":{"@type":"Answer","text":"Both. I work with aspiring and junior athletes building the right foundations, right through to representative-level athletes fine-tuning performance."}},
+    {"@type":"Question","name":"Do you offer coaching outside the Gold Coast?","acceptedAnswer":{"@type":"Answer","text":"Yes. I coach in person on the Gold Coast and deliver online programming and remote coaching to athletes anywhere in Australia."}},
+    {"@type":"Question","name":"How is this different from a regular gym program?","acceptedAnswer":{"@type":"Answer","text":"Every program is built on sports-science research and individualised to your sport, position and calendar, then adjusted using GPS and load data rather than guesswork."}},
+    {"@type":"Question","name":"Do you work with junior and youth athletes?","acceptedAnswer":{"@type":"Answer","text":"Yes, long-term youth athletic development is a core focus, building movement quality and physical literacy safely and age-appropriately."}},
+    {"@type":"Question","name":"How do I get started?","acceptedAnswer":{"@type":"Answer","text":"Send an enquiry through the contact form with your goals, and Dr Singh will be in touch to talk through how you'd work together."}}
+  ]
 }
 </script>
 </head>
@@ -59,6 +74,7 @@
     <a href="#approach">Approach</a>
     <a href="#services">Services</a>
     <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
     <a href="#contact" class="link-cta">Book a session</a>
   </nav>
 </header>
@@ -182,15 +198,31 @@
   <a href="#contact" class="btn brandband__cta">Book a consultation</a>
 </section>
 
+<!-- FAQ -->
+<section class="approach" id="faq">
+  <p class="kicker kicker--center">Common questions</p>
+  <div class="pillars pillars--faq">
+    <div class="pillar"><h3>Do you coach beginners or only elite athletes?</h3><p>Both. I work with aspiring and junior athletes building the right foundations, right through to representative-level athletes fine-tuning performance.</p></div>
+    <div class="pillar"><h3>Do you offer coaching outside the Gold Coast?</h3><p>Yes. I coach in person on the Gold Coast and deliver online programming and remote coaching to athletes anywhere in Australia.</p></div>
+    <div class="pillar"><h3>How is this different from a regular gym program?</h3><p>Every program is built on sports-science research and individualised to your sport, position and calendar — then adjusted using GPS and load data, not guesswork.</p></div>
+    <div class="pillar"><h3>Do you work with junior and youth athletes?</h3><p>Yes — long-term youth athletic development is a core focus, building movement quality and physical literacy safely and age-appropriately.</p></div>
+    <div class="pillar"><h3>How do I get started?</h3><p>Send an enquiry through the form below with your goals, and I'll be in touch to talk through how we'd work together.</p></div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact__inner">
     <p class="kicker kicker--light">Get started</p>
     <h2>Let's build your next level.</h2>
     <p class="contact__lede">Tell me about yourself and your goals — I'll be in touch to talk through how we'd work together.</p>
-    <form class="form" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="enquiry" />
-      <p class="hidden"><label>Leave blank: <input name="bot-field" /></label></p>
+    <form class="form" name="enquiry" method="POST" action="https://api.web3forms.com/submit">
+      <!-- Web3Forms: paste your free access key below (get it at web3forms.com using pritpal.singh.36991@gmail.com) -->
+      <input type="hidden" name="access_key" value="e1cdface-5e6e-43bd-a120-fbaf34abcbf4" />
+      <input type="hidden" name="subject" value="New enquiry — Singh Performance" />
+      <input type="hidden" name="from_name" value="Singh Performance website" />
+      <!-- Honeypot: real users never see or fill this; bots do, and get silently rejected -->
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none !important" tabindex="-1" autocomplete="off" />
       <div class="form__row">
         <label>Name<input type="text" name="name" required /></label>
         <label>Email<input type="email" name="email" required /></label>
