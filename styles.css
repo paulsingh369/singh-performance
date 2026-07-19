@@ -163,19 +163,16 @@ h1,h2,h3{font-family:'Saira Condensed',sans-serif;color:var(--ink);font-weight:7
 .about__mission{font-family:'Saira Condensed',sans-serif;text-transform:uppercase;font-size:1.35rem;line-height:1.22;
   color:#fff!important;border-left:4px solid var(--blue);padding-left:20px;margin:26px 0 30px!important;letter-spacing:.3px}
 
-/* ============ BRAND BAND (contained CTA card, not full block) ============ */
-.brandband{background:var(--paper);padding:30px 40px 96px;text-align:center}
-.brandband{max-width:var(--max);margin:0 auto;display:flex;flex-direction:column;align-items:center;
+/* ============ BRAND BAND (full-width CTA block, flush edge-to-edge) ============ */
+.brandband{display:flex;flex-direction:column;align-items:center;text-align:center;
   background:radial-gradient(120% 140% at 50% 0%, rgba(255,255,255,.14), transparent 55%),linear-gradient(160deg,var(--blue),var(--blue-deep));
-  border-radius:24px;padding:64px 40px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-.brandband__mark{width:min(360px,76%);margin:0 auto 20px;position:relative;z-index:2}
-.brandband__tag{position:relative;z-index:2;color:rgba(255,255,255,.9);font-family:'Saira Condensed',sans-serif;
-  text-transform:uppercase;letter-spacing:.8px;font-size:clamp(1rem,1.8vw,1.25rem);margin-bottom:30px}
+  padding:70px 40px;position:relative;overflow:hidden}
+.brandband__mark{width:min(300px,68%);margin:0 auto 18px;position:relative;z-index:2}
+.brandband__tag{position:relative;z-index:2;color:rgba(255,255,255,.92);font-family:'Saira Condensed',sans-serif;
+  text-transform:uppercase;letter-spacing:.8px;font-size:clamp(1rem,1.8vw,1.25rem);max-width:34ch;margin-bottom:28px}
 .brandband__cta{position:relative;z-index:2;background:#fff;color:var(--blue);padding:16px 34px;border-radius:8px;
   font-family:'Saira Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:1.2px}
 .brandband__cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(0,0,0,.4)}
-/* wrap brandband in spacing */
-body :where(.brandband){margin-top:40px;margin-bottom:40px}
 
 /* ============ CONTACT ============ */
 .contact{background:var(--mist);padding:92px 40px}
