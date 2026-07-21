@@ -2,3 +2,7 @@
 serve.py
 node_modules/
 *.log
+
+# never commit credentials
+singh-performance-growth-*.json
+*service*account*.json
