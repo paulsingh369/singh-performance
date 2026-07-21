@@ -206,27 +206,27 @@
   <ol class="svc-list">
     <li class="svc">
       <span class="svc__no">01</span>
-      <div class="svc__body"><h3>1:1 Athlete Coaching</h3><p>Individualised strength &amp; conditioning to build speed, power and durability, periodised around your competition calendar.</p></div>
+      <div class="svc__body"><h3>1:1 Athlete Coaching</h3><p class="svc__benefit">Built around your sport, not a template</p><p>Individualised strength &amp; conditioning to build speed, power and durability, periodised around your competition calendar.</p></div>
     </li>
     <li class="svc">
       <span class="svc__no">02</span>
-      <div class="svc__body"><h3>Performance Analysis</h3><p>GPS and load monitoring, data analysis and clear reporting to manage workload and reduce injury risk.</p></div>
+      <div class="svc__body"><h3>Performance Analysis</h3><p class="svc__benefit">Decisions from data, not guesswork</p><p>GPS and load monitoring, data analysis and clear reporting to manage workload and reduce injury risk.</p></div>
     </li>
     <li class="svc">
       <span class="svc__no">03</span>
-      <div class="svc__body"><h3>Online Programming</h3><p>Remote coaching and custom programs for athletes anywhere in Australia, with regular check-ins and review.</p></div>
+      <div class="svc__body"><h3>Online Programming</h3><p class="svc__benefit">Professional structure, wherever you are</p><p>Remote coaching and custom programs for athletes anywhere in Australia, with regular check-ins and review.</p></div>
     </li>
     <li class="svc">
       <span class="svc__no">04</span>
-      <div class="svc__body"><h3>Youth Athletic Development</h3><p>Long-term development for junior athletes, building movement quality and physical literacy the right way.</p></div>
+      <div class="svc__body"><h3>Youth Athletic Development</h3><p class="svc__benefit">Foundations first, built to last</p><p>Long-term development for junior athletes, building movement quality and physical literacy the right way.</p></div>
     </li>
     <li class="svc">
       <span class="svc__no">05</span>
-      <div class="svc__body"><h3>Team &amp; Squad Conditioning</h3><p>Pre-season planning and periodised conditioning for clubs, academies and representative teams across all codes.</p></div>
+      <div class="svc__body"><h3>Team &amp; Squad Conditioning</h3><p class="svc__benefit">A professional standard for the whole squad</p><p>Pre-season planning and periodised conditioning for clubs, academies and representative teams across all codes.</p></div>
     </li>
     <li class="svc">
       <span class="svc__no">06</span>
-      <div class="svc__body"><h3>Return to Performance</h3><p>Structured return-to-play conditioning that bridges rehab and competition, so you come back stronger than before.</p></div>
+      <div class="svc__body"><h3>Return to Performance</h3><p class="svc__benefit">Come back stronger, not just cleared</p><p>Structured return-to-play conditioning that bridges rehab and competition, so you come back stronger than before.</p></div>
     </li>
   </ol>
   <div class="svc-cta">
@@ -372,6 +372,11 @@
   </div>
 </section>
 
+<!-- STICKY CTA BAR -->
+<div class="ctabar" id="ctabar" aria-hidden="true">
+  <a href="#contact">Book a Free Consultation</a>
+</div>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer__inner">
@@ -402,6 +407,23 @@
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
     links.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+  })();
+
+  // Sticky CTA bar: show after the hero, hide while the contact form is on screen
+  (function(){
+    var bar = document.getElementById('ctabar');
+    var hero = document.querySelector('.hero');
+    var contact = document.getElementById('contact');
+    if(!bar || !hero || !contact) return;
+    function update(){
+      var pastHero = window.scrollY > hero.offsetHeight * 0.7;
+      var c = contact.getBoundingClientRect();
+      var contactVisible = c.top < window.innerHeight && c.bottom > 0;
+      var show = pastHero && !contactVisible;
+      bar.classList.toggle('show', show);
+      bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+    }
+    update(); window.addEventListener('scroll', update, { passive:true });
   })();
 
   // Nav shadow once scrolled

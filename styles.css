@@ -355,3 +355,55 @@ h1,h2,h3{font-family:'Saira Condensed',sans-serif;color:var(--ink);font-weight:7
 /* Hero portrait removed temporarily (2026-07-20) — single-column hero until the
    replacement photo arrives; delete this block when .hero__mark is restored */
 .hero__grid{grid-template-columns:1fr;max-width:880px}
+
+/* ============ Craft pass — TIE-sandbox-grade polish ============ */
+/* Frosted sticky nav */
+.nav{background:rgba(255,255,255,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav--scrolled{box-shadow:0 8px 30px -18px rgba(15,20,36,.35)}
+
+/* Atmospheric hero: layered glow instead of flat navy */
+.hero{background:
+  radial-gradient(900px 520px at 82% 8%, rgba(30,68,214,.38), transparent 62%),
+  radial-gradient(700px 480px at 8% 92%, rgba(126,151,255,.14), transparent 60%),
+  linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 58%, #0d1330 100%)}
+.hero .lede{color:#c9d1ec;font-size:1.12rem;line-height:1.8;max-width:640px}
+
+/* Two-level service rows: benefit line under each title */
+.svc__benefit{font-family:'Saira Condensed',sans-serif;text-transform:uppercase;letter-spacing:1.4px;
+  color:var(--blue);font-weight:700;font-size:.95rem;margin:4px 0 8px}
+
+/* Card hover discipline everywhere */
+.pillar,.lfact,.tier,.loop li,.svc{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.pillar:hover{transform:translateY(-4px);box-shadow:var(--shadow-sm)}
+.svc:hover{transform:translateY(-3px)}
+.lfact:hover,.tier:hover,.loop li:hover{transform:translateY(-4px);border-color:rgba(159,176,255,.35)}
+
+/* Section rhythm: more air, like the TIE layout */
+.approach,.services{padding-top:110px;padding-bottom:110px}
+
+/* Dark longevity section gets the same atmospheric depth */
+.longevity{background:
+  radial-gradient(820px 480px at 88% 6%, rgba(30,68,214,.30), transparent 60%),
+  radial-gradient(600px 420px at 4% 96%, rgba(126,151,255,.10), transparent 55%),
+  linear-gradient(165deg, var(--navy) 0%, var(--navy-2) 60%, #0d1330 100%)}
+
+/* Photo bands: navy colour-grade + cinematic overlay (TIE duotone feel) */
+.band img{filter:saturate(.82) contrast(1.06)}
+.band::after{content:"";position:absolute;inset:0;background:rgba(23,34,70,.28);mix-blend-mode:multiply;pointer-events:none}
+.band__overlay{background:linear-gradient(to top, rgba(15,20,36,.82) 0%, rgba(15,20,36,.25) 45%, rgba(15,20,36,.05) 100%);z-index:1}
+
+/* Buttons: slightly softer, more presence */
+.btn{border-radius:10px}
+
+/* Sticky bottom CTA bar (TIE "Start Growing My Practice" pattern) */
+.ctabar{position:fixed;left:16px;right:16px;bottom:16px;z-index:60;display:flex;justify-content:center;
+  transform:translateY(140%);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.ctabar.show{transform:none}
+.ctabar a{display:block;width:min(720px,100%);text-align:center;background:rgba(255,255,255,.92);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--blue-deep);
+  font-family:'Saira Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:1.6px;
+  font-size:1.12rem;padding:18px 28px;border-radius:14px;border:1px solid var(--line);
+  box-shadow:0 18px 44px -18px rgba(15,20,36,.45)}
+.ctabar a:hover{background:var(--blue);color:#fff}
+@media(max-width:640px){.ctabar{left:10px;right:10px;bottom:10px}.ctabar a{padding:15px 20px;font-size:1rem}}
+.svc__body p.svc__benefit{color:var(--blue);font-size:.95rem}
